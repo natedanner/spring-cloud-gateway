@@ -30,7 +30,7 @@ public class DelegatingServiceInstance implements ServiceInstance {
 
 	final ServiceInstance delegate;
 
-	private String overrideScheme;
+	private final String overrideScheme;
 
 	public DelegatingServiceInstance(ServiceInstance delegate, String overrideScheme) {
 		this.delegate = delegate;

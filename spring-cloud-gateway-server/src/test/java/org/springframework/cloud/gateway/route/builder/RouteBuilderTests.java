@@ -55,9 +55,9 @@ public class RouteBuilderTests {
 				.build();
 
 		StepVerifier.create(routeLocator.getRoutes())
-				.expectNextMatches(r -> r.getId().equals("test1") && r.getFilters().size() == 1
+				.expectNextMatches(r -> "test1".equals(r.getId()) && r.getFilters().size() == 1
 						&& r.getUri().equals(URI.create("http://someuri:80")))
-				.expectNextMatches(r -> r.getId().equals("test2") && r.getFilters().size() == 1
+				.expectNextMatches(r -> "test2".equals(r.getId()) && r.getFilters().size() == 1
 						&& r.getUri().equals(URI.create("https://httpbin.org:9090")))
 				.expectComplete().verify();
 	}
@@ -77,9 +77,9 @@ public class RouteBuilderTests {
 				.build();
 
 		StepVerifier.create(routeLocator.getRoutes())
-				.expectNextMatches(r -> r.getId().equals("test1") && r.getFilters().size() == 1
+				.expectNextMatches(r -> "test1".equals(r.getId()) && r.getFilters().size() == 1
 						&& r.getUri().equals(URI.create("http://someuri:80")) && r.getMetadata().equals(routeMetadata))
-				.expectNextMatches(r -> r.getId().equals("test2") && r.getFilters().size() == 1
+				.expectNextMatches(r -> "test2".equals(r.getId()) && r.getFilters().size() == 1
 						&& r.getUri().equals(URI.create("https://httpbin.org:9090")) && r.getMetadata().isEmpty())
 				.expectComplete().verify();
 	}
@@ -97,11 +97,11 @@ public class RouteBuilderTests {
 				.build();
 
 		StepVerifier.create(routeLocator.getRoutes())
-				.expectNextMatches(r -> r.getId().equals("test1") && r.getFilters().size() == 1
+				.expectNextMatches(r -> "test1".equals(r.getId()) && r.getFilters().size() == 1
 						&& r.getUri().equals(URI.create("http://someuri:80"))
 						&& r.getMetadata().get(RESPONSE_TIMEOUT_ATTR).equals(1)
 						&& r.getMetadata().get(CONNECT_TIMEOUT_ATTR).equals(1))
-				.expectNextMatches(r -> r.getId().equals("test2") && r.getFilters().size() == 1
+				.expectNextMatches(r -> "test2".equals(r.getId()) && r.getFilters().size() == 1
 						&& r.getUri().equals(URI.create("https://httpbin.org:9090")))
 				.expectComplete().verify();
 	}

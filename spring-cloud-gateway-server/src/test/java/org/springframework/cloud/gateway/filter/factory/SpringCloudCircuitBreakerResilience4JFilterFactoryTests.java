@@ -16,6 +16,7 @@
 
 package org.springframework.cloud.gateway.filter.factory;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.timelimiter.TimeLimiterRegistry;
 import org.junit.jupiter.api.Test;
@@ -105,9 +106,8 @@ public class SpringCloudCircuitBreakerResilience4JFilterFactoryTests
 
 		@Bean
 		public Customizer<ReactiveResilience4JCircuitBreakerFactory> slowCusomtizer() {
-			return factory -> {
-				factory.addCircuitBreakerCustomizer(cb -> cb.transitionToForcedOpenState(), "failcmd");
-			};
+			return factory ->
+				factory.addCircuitBreakerCustomizer(CircuitBreaker::transitionToForcedOpenState, "failcmd");
 		}
 
 	}

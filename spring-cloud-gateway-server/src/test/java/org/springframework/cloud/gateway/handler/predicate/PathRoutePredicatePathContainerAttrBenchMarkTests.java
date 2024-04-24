@@ -37,13 +37,13 @@ import org.springframework.web.server.ServerWebExchange;
 
 public class PathRoutePredicatePathContainerAttrBenchMarkTests {
 
-	private static List<Predicate<ServerWebExchange>> predicates;
+	private static final List<Predicate<ServerWebExchange>> predicates;
 
-	private static String PATH_PATTERN_PREFIX;
+	private static final String PATH_PATTERN_PREFIX;
 
-	private final static String HOST = "http://localhost:8080";
+	private static final String HOST = "http://localhost:8080";
 
-	private final static int ROUTES_NUM = 2000;
+	private static final int ROUTES_NUM = 2000;
 
 	static {
 		predicates = new LinkedList<>();

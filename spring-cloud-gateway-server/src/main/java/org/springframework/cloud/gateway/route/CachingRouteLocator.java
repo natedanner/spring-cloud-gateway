@@ -88,11 +88,10 @@ public class CachingRouteLocator
 				final Mono<List<Route>> scopedRoutes = fetch(event.getMetadata()).collect(Collectors.toList())
 						.onErrorResume(s -> Mono.just(List.of()));
 
-				scopedRoutes.subscribe(scopedRoutesList -> {
+				scopedRoutes.subscribe(scopedRoutesList ->
 					Flux.concat(Flux.fromIterable(scopedRoutesList), getNonScopedRoutes(event))
 							.sort(AnnotationAwareOrderComparator.INSTANCE).materialize().collect(Collectors.toList())
-							.subscribe(this::publishRefreshEvent, this::handleRefreshError);
-				}, this::handleRefreshError);
+							.subscribe(this::publishRefreshEvent, this::handleRefreshError), this::handleRefreshError);
 			}
 			else {
 				final Mono<List<Route>> allRoutes = fetch().collect(Collectors.toList());

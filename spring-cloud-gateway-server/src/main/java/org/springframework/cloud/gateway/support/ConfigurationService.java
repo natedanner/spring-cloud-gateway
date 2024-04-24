@@ -78,11 +78,11 @@ public class ConfigurationService implements ApplicationEventPublisherAware {
 	}
 
 	public <T, C extends Configurable<T> & ShortcutConfigurable> ConfigurableBuilder<T, C> with(C configurable) {
-		return new ConfigurableBuilder<T, C>(this, configurable);
+		return new ConfigurableBuilder<>(this, configurable);
 	}
 
 	public <T> InstanceBuilder<T> with(T instance) {
-		return new InstanceBuilder<T>(this, instance);
+		return new InstanceBuilder<>(this, instance);
 	}
 
 	/* for testing */ static <T> T bindOrCreate(Bindable<T> bindable, Map<String, Object> properties,
@@ -146,10 +146,8 @@ public class ConfigurationService implements ApplicationEventPublisherAware {
 		@Override
 		protected T doBind() {
 			Bindable<T> bindable = Bindable.of(this.configurable.getConfigClass());
-			T bound = bindOrCreate(bindable, this.normalizedProperties, this.configurable.shortcutFieldPrefix(),
+			return bindOrCreate(bindable, this.normalizedProperties, this.configurable.shortcutFieldPrefix(),
 					/* this.name, */this.service.validator.get(), this.service.conversionService.get());
-
-			return bound;
 		}
 
 	}
@@ -183,7 +181,7 @@ public class ConfigurationService implements ApplicationEventPublisherAware {
 
 	}
 
-	public static abstract class AbstractBuilder<T, B extends AbstractBuilder<T, B>> {
+	public abstract static class AbstractBuilder<T, B extends AbstractBuilder<T, B>> {
 
 		protected final ConfigurationService service;
 

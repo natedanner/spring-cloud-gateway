@@ -117,9 +117,8 @@ public class HttpBinCompatibleController {
 		}
 		HashMap<String, Object> result = new HashMap<>();
 		HashMap<String, String> params = new HashMap<>();
-		exchange.getRequest().getQueryParams().forEach((name, values) -> {
-			params.put(name, values.get(0));
-		});
+		exchange.getRequest().getQueryParams().forEach((name, values) ->
+			params.put(name, values.get(0)));
 		result.put("args", params);
 		result.put("headers", getHeaders(exchange));
 		return result;
@@ -130,7 +129,7 @@ public class HttpBinCompatibleController {
 	public Mono<Map<String, Object>> postFormData(@RequestBody Mono<MultiValueMap<String, Part>> parts) {
 		// StringDecoder decoder = StringDecoder.allMimeTypes(true);
 		return parts.flux().flatMap(map -> Flux.fromIterable(map.values())).flatMap(Flux::fromIterable)
-				.filter(part -> part instanceof FilePart).reduce(new HashMap<String, Object>(), (files, part) -> {
+				.filter(FilePart.class::isInstance).reduce(new HashMap<String, Object>(), (files, part) -> {
 					MediaType contentType = part.headers().getContentType();
 					long contentLength = part.headers().getContentLength();
 					// TODO: get part data

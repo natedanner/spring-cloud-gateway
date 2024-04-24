@@ -27,7 +27,7 @@ import org.springframework.core.style.ToStringCreator;
 public abstract class AbstractRateLimiter<C> extends AbstractStatefulConfigurable<C>
 		implements RateLimiter<C>, ApplicationListener<FilterArgsEvent> {
 
-	private String configurationPropertyName;
+	private final String configurationPropertyName;
 
 	private ConfigurationService configurationService;
 

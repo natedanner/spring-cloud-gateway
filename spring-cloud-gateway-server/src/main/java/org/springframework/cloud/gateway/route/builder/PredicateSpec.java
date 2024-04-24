@@ -162,9 +162,8 @@ public class PredicateSpec extends UriSpec {
 	 * @return a {@link BooleanSpec} to be used to add logical operators
 	 */
 	public BooleanSpec method(HttpMethod... methods) {
-		return asyncPredicate(getBean(MethodRoutePredicateFactory.class).applyAsync(c -> {
-			c.setMethods(methods);
-		}));
+		return asyncPredicate(getBean(MethodRoutePredicateFactory.class).applyAsync(c ->
+			c.setMethods(methods)));
 	}
 
 	/**
@@ -274,9 +273,8 @@ public class PredicateSpec extends UriSpec {
 	 * @return a {@link BooleanSpec} to be used to add logical operators
 	 */
 	public BooleanSpec xForwardedRemoteAddr(String... addrs) {
-		return asyncPredicate(getBean(XForwardedRemoteAddrRoutePredicateFactory.class).applyAsync(c -> {
-			c.setSources(addrs);
-		}));
+		return asyncPredicate(getBean(XForwardedRemoteAddrRoutePredicateFactory.class).applyAsync(c ->
+			c.setSources(addrs)));
 	}
 
 	/**

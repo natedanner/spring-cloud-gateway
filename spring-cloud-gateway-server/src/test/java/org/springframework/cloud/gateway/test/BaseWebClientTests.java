@@ -60,7 +60,7 @@ public class BaseWebClientTests {
 	public static final String SERVICE_ID = "testservice";
 
 	@LocalServerPort
-	protected int port = 0;
+	protected int port;
 
 	protected WebTestClient testClient;
 
@@ -139,7 +139,7 @@ public class BaseWebClientTests {
 	public static class TestLoadBalancerConfig {
 
 		@LocalServerPort
-		protected int port = 0;
+		protected int port;
 
 		@Bean
 		public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {

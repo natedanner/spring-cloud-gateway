@@ -74,7 +74,7 @@ public class GatewayProperties {
 
 	public void setRoutes(List<RouteDefinition> routes) {
 		this.routes = routes;
-		if (routes != null && routes.size() > 0 && logger.isDebugEnabled()) {
+		if (routes != null && !routes.isEmpty() && logger.isDebugEnabled()) {
 			logger.debug("Routes supplied from Gateway Properties: " + routes);
 		}
 	}

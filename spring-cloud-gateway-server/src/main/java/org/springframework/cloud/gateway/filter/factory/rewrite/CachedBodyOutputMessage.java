@@ -38,9 +38,9 @@ public class CachedBodyOutputMessage implements ReactiveHttpOutputMessage {
 
 	private final HttpHeaders httpHeaders;
 
-	private boolean cached = false;
+	private boolean cached;
 
-	private Flux<DataBuffer> body = null;
+	private Flux<DataBuffer> body;
 
 	public CachedBodyOutputMessage(ServerWebExchange exchange, HttpHeaders httpHeaders) {
 		this.bufferFactory = exchange.getResponse().bufferFactory();

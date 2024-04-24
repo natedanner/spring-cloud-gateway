@@ -37,7 +37,7 @@ public class TestLoadBalancerConfig {
 	public static class Local {
 
 		@LocalServerPort
-		protected int port = 0;
+		protected int port;
 
 		@Bean
 		public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {

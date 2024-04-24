@@ -66,7 +66,7 @@ public class CacheRequestBodyGatewayFilterFactory
 				String scheme = requestUri.getScheme();
 
 				// Record only http requests (including https)
-				if ((!"http".equals(scheme) && !"https".equals(scheme))) {
+				if (!"http".equals(scheme) && !"https".equals(scheme)) {
 					return chain.filter(exchange);
 				}
 
@@ -75,7 +75,7 @@ public class CacheRequestBodyGatewayFilterFactory
 					return chain.filter(exchange);
 				}
 
-				return ServerWebExchangeUtils.cacheRequestBodyAndRequest(exchange, (serverHttpRequest) -> {
+				return ServerWebExchangeUtils.cacheRequestBodyAndRequest(exchange, serverHttpRequest -> {
 					final ServerRequest serverRequest = ServerRequest
 							.create(exchange.mutate().request(serverHttpRequest).build(), messageReaders);
 					return serverRequest.bodyToMono((config.getBodyClass())).doOnNext(objectValue -> {

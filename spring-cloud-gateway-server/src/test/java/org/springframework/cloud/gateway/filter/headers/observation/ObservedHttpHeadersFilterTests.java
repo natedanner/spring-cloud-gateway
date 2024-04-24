@@ -60,7 +60,7 @@ public class ObservedHttpHeadersFilterTests extends SampleTestRunner {
 			MockServerHttpRequest.BaseBuilder<?> builder = MockServerHttpRequest
 					.get("http://localhost:8080/{foo}", "get").header("X-A", "aValue");
 			TraceContext context = bb.getTracer().currentTraceContext().context();
-			bb.getPropagator().inject(context, builder, (b, k, v) -> b.header(k, v));
+			bb.getPropagator().inject(context, builder, MockServerHttpRequest.BaseBuilder::header);
 			MockServerHttpRequest request = builder.build();
 			MockServerWebExchange exchange = MockServerWebExchange.from(request);
 			ServerWebExchangeUtils.putUriTemplateVariables(exchange, Map.of("foo", "get"));

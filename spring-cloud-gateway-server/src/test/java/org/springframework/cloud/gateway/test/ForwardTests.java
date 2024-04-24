@@ -41,7 +41,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class ForwardTests {
 
 	@LocalServerPort
-	protected int port = 0;
+	protected int port;
 
 	protected WebTestClient client;
 

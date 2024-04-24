@@ -115,9 +115,8 @@ public class RouterFunctionHolderFactory {
 				properties.getRoutesMap().size(), properties.getRoutes().size()));
 
 		Map<String, RouterFunction> routerFunctions = new LinkedHashMap<>();
-		properties.getRoutes().forEach(routeProperties -> {
-			routerFunctions.put(routeProperties.getId(), getRouterFunction(routeProperties, routeProperties.getId()));
-		});
+		properties.getRoutes().forEach(routeProperties ->
+			routerFunctions.put(routeProperties.getId(), getRouterFunction(routeProperties, routeProperties.getId())));
 		properties.getRoutesMap().forEach((routeId, routeProperties) -> {
 			String computedRouteId = routeId;
 			if (StringUtils.hasText(routeProperties.getId())) {
@@ -294,8 +293,7 @@ public class RouterFunctionHolderFactory {
 				.singletonList(new MapConfigurationPropertySource(args));
 		// TODO: potentially deal with conversion service
 		Binder binder = new Binder(propertySources, null, DefaultConversionService.getSharedInstance());
-		Object config = binder.bindOrCreate("", bindable, new IgnoreTopLevelConverterNotFoundBindHandler());
-		return config;
+		return binder.bindOrCreate("", bindable, new IgnoreTopLevelConverterNotFoundBindHandler());
 	}
 
 	static class TrueNullOperationArgumentResolver implements OperationArgumentResolver {

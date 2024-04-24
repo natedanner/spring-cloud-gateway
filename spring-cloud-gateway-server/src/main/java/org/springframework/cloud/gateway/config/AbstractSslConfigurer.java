@@ -54,7 +54,7 @@ public abstract class AbstractSslConfigurer<T, S> {
 		this.ssl = sslProperties;
 	}
 
-	abstract public S configureSsl(T client) throws SSLException;
+	public abstract S configureSsl(T client) throws SSLException;
 
 	protected HttpClientProperties.Ssl getSslProperties() {
 		return ssl;

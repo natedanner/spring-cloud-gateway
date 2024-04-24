@@ -70,7 +70,7 @@ public @interface Shortcut {
 		/**
 		 * List is all elements except last which is a boolean flag.
 		 */
-		LIST_TAIL_FLAG;
+		LIST_TAIL_FLAG
 
 	}
 

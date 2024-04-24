@@ -99,10 +99,10 @@ public class DiscoveryClientRouteDefinitionLocatorIntegrationTests {
 
 		@Override
 		public Flux<ServiceInstance> getInstances(String serviceId) {
-			if (serviceId.equals("service1")) {
+			if ("service1".equals(serviceId)) {
 				return Flux.just(instance1);
 			}
-			if (serviceId.equals("service2")) {
+			if ("service2".equals(serviceId)) {
 				return Flux.just(instance2);
 			}
 			return Flux.empty();

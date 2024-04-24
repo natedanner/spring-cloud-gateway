@@ -49,7 +49,7 @@ public class HttpClientSslConfigurer extends AbstractSslConfigurer<HttpClient, H
 	}
 
 	protected void configureSslContext(HttpClientProperties.Ssl ssl, SslProvider.SslContextSpec sslContextSpec) {
-		SslProvider.ProtocolSslContextSpec clientSslContext = (serverProperties.getHttp2().isEnabled())
+		SslProvider.ProtocolSslContextSpec clientSslContext = serverProperties.getHttp2().isEnabled()
 				? Http2SslContextSpec.forClient() : Http11SslContextSpec.forClient();
 		clientSslContext.configure(sslContextBuilder -> {
 			X509Certificate[] trustedX509Certificates = getTrustedX509CertificatesForTrustManager();

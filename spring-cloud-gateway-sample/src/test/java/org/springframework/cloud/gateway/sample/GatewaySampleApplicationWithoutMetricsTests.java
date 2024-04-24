@@ -37,7 +37,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @DirtiesContext
 public class GatewaySampleApplicationWithoutMetricsTests {
 
-	static protected int port;
+	protected static int port;
 
 	protected WebTestClient webClient;
 

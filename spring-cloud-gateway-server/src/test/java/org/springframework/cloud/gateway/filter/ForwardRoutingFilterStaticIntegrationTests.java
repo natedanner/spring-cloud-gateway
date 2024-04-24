@@ -35,9 +35,8 @@ public class ForwardRoutingFilterStaticIntegrationTests extends BaseWebClientTes
 	@Test
 	public void gatewayRequestsMeterFilterHasTags() {
 		testClient.get().uri("/mydocs").exchange().expectStatus().isOk().expectBody(String.class)
-				.consumeWith(result -> {
-					assertThat(result.getResponseBody()).contains("Docs 123");
-				});
+				.consumeWith(result ->
+					assertThat(result.getResponseBody()).contains("Docs 123"));
 	}
 
 	@EnableAutoConfiguration

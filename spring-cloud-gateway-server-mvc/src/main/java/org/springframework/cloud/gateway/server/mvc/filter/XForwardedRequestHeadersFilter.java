@@ -64,7 +64,7 @@ public class XForwardedRequestHeadersFilter implements HttpHeadersFilter.Request
 	public static final String X_FORWARDED_PREFIX_HEADER = "X-Forwarded-Prefix";
 
 	/** The order of the XForwardedHeadersFilter. */
-	private int order = 0;
+	private int order;
 
 	/** If the XForwardedHeadersFilter is enabled. */
 	private boolean enabled = true;

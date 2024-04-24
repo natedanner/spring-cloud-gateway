@@ -58,7 +58,7 @@ public abstract class SpringCloudCircuitBreakerFilterFactory
 	/** CircuitBreaker component name. */
 	public static final String NAME = "CircuitBreaker";
 
-	private ReactiveCircuitBreakerFactory reactiveCircuitBreakerFactory;
+	private final ReactiveCircuitBreakerFactory reactiveCircuitBreakerFactory;
 
 	private ReactiveCircuitBreaker cb;
 
@@ -163,7 +163,7 @@ public abstract class SpringCloudCircuitBreakerFilterFactory
 
 		private Set<String> statusCodes = new HashSet<>();
 
-		private boolean resumeWithoutError = false;
+		private boolean resumeWithoutError;
 
 		@Override
 		public void setRouteId(String routeId) {

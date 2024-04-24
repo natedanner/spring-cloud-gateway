@@ -91,7 +91,7 @@ public class RemoveJsonAttributesResponseBodyGatewayFilterFactory extends
 
 	private final ModifyResponseBodyGatewayFilterFactory modifyResponseBodyGatewayFilterFactory;
 
-	private ObjectMapper mapper = new ObjectMapper();
+	private final ObjectMapper mapper = new ObjectMapper();
 
 	private void removeJsonAttribute(JsonNode jsonBodyContent, List<String> fieldsToRemove, boolean deleteRecursively) {
 		if (deleteRecursively) {

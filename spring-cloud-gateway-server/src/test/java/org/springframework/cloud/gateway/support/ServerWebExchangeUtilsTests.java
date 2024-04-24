@@ -76,7 +76,7 @@ public class ServerWebExchangeUtilsTests {
 
 		ServerWebExchangeUtils
 				.cacheRequestBodyAndRequest(exchange,
-						(serverHttpRequest) -> ServerRequest
+						serverHttpRequest -> ServerRequest
 								.create(exchange.mutate().request(serverHttpRequest).build(),
 										HandlerStrategies.withDefaults().messageReaders())
 								.bodyToMono(DefaultDataBuffer.class))
@@ -92,7 +92,7 @@ public class ServerWebExchangeUtilsTests {
 
 		ServerWebExchangeUtils
 				.cacheRequestBodyAndRequest(exchange,
-						(serverHttpRequest) -> ServerRequest
+						serverHttpRequest -> ServerRequest
 								.create(exchange.mutate().request(serverHttpRequest).build(),
 										HandlerStrategies.withDefaults().messageReaders())
 								.bodyToMono(DefaultDataBuffer.class))

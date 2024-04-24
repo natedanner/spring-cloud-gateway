@@ -57,9 +57,8 @@ public class VanillaRouterFunctionTests {
 	@Test
 	public void routerFunctionsRouteWorks() {
 		restClient.post().uri("/anything/routerfunctionsroute").header("Host", "www.routerfunctionsroute.org")
-				.bodyValue("hello").exchange().expectStatus().isOk().expectBody(Map.class).consumeWith(result -> {
-					System.out.println();
-				});
+				.bodyValue("hello").exchange().expectStatus().isOk().expectBody(Map.class).consumeWith(result ->
+					System.out.println());
 	}
 
 	@SpringBootConfiguration

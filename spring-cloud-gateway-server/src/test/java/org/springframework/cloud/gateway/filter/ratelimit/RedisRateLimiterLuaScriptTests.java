@@ -16,6 +16,7 @@
 
 package org.springframework.cloud.gateway.filter.ratelimit;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -87,8 +88,8 @@ public class RedisRateLimiterLuaScriptTests {
 		assertThat(result.get(1)).isEqualTo(9);
 
 		for (String key : keys) {
-			long ttl = redisTemplate.getExpire(key).map(duration -> duration.getSeconds()).block();
-			long fillTime = (capacity / rate);
+			long ttl = redisTemplate.getExpire(key).map(Duration::getSeconds).block();
+			long fillTime = capacity / rate;
 			assertThat(ttl).isGreaterThanOrEqualTo(fillTime);
 		}
 	}
@@ -110,8 +111,8 @@ public class RedisRateLimiterLuaScriptTests {
 		assertThat(result.get(1)).isEqualTo(3);
 
 		for (String key : keys) {
-			long ttl = redisTemplate.getExpire(key).map(duration -> duration.getSeconds()).block();
-			long fillTime = (capacity / rate);
+			long ttl = redisTemplate.getExpire(key).map(Duration::getSeconds).block();
+			long fillTime = capacity / rate;
 			assertThat(ttl).isGreaterThanOrEqualTo(fillTime);
 		}
 	}

@@ -20,6 +20,7 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -178,7 +179,7 @@ class SetMaxAgeHeaderAfterCacheExchangeMutatorTest {
 				return Long.parseLong(matcher.group(1));
 			}
 			return null;
-		}).filter(maxAge -> maxAge != null).findFirst();
+		}).filter(Objects::nonNull).findFirst();
 	}
 
 }

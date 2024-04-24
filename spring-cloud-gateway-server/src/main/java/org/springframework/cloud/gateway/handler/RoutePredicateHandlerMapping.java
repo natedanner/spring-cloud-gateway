@@ -66,8 +66,8 @@ public class RoutePredicateHandlerMapping extends AbstractHandlerMapping {
 		if (this.managementPort != null && this.managementPort < 0) {
 			return DISABLED;
 		}
-		return ((this.managementPort == null || (serverPort == null && this.managementPort.equals(8080))
-				|| (this.managementPort != 0 && this.managementPort.equals(serverPort))) ? SAME : DIFFERENT);
+		return this.managementPort == null || (serverPort == null && this.managementPort.equals(8080))
+				|| (this.managementPort != 0 && this.managementPort.equals(serverPort)) ? SAME : DIFFERENT;
 	}
 
 	private static Integer getPortProperty(Environment environment, String prefix) {
@@ -188,7 +188,7 @@ public class RoutePredicateHandlerMapping extends AbstractHandlerMapping {
 		/**
 		 * The management port and server port are different.
 		 */
-		DIFFERENT;
+		DIFFERENT
 
 	}
 

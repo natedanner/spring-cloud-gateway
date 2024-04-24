@@ -43,13 +43,12 @@ public class BetweenRoutePredicateFactoryTests {
 		ApplicationConversionService conversionService = new ApplicationConversionService();
 		conversionService.addConverter(new StringToZonedDateTimeConverter());
 		// @formatter:off
-		T config = new ConfigurationService(null, () -> conversionService, () -> null)
+		// @formatter:on
+		return new ConfigurationService(null, () -> conversionService, () -> null)
 				.with(factory)
 				.name("myname")
 				.normalizedProperties(properties)
 				.bind();
-		// @formatter:on
-		return config;
 	}
 
 	static String minusHoursMillis(int hours) {

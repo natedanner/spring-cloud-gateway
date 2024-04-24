@@ -121,7 +121,7 @@ public interface AsyncPredicate<T> extends Function<T, Publisher<Boolean>>, HasC
 
 		@Override
 		public Publisher<Boolean> apply(T t) {
-			return Mono.from(left.apply(t)).flatMap(result -> !result ? Mono.just(false) : Mono.from(right.apply(t)));
+			return Mono.from(left.apply(t)).flatMap(result -> result ? Mono.from(right.apply(t)) : Mono.just(false));
 		}
 
 		@Override

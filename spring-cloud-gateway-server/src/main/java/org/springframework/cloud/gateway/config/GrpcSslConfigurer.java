@@ -49,7 +49,7 @@ public class GrpcSslConfigurer extends AbstractSslConfigurer<NettyChannelBuilder
 			sslContextBuilder.trustManager(InsecureTrustManagerFactory.INSTANCE.getTrustManagers()[0]);
 		}
 
-		if (!useInsecureTrustManager && ssl.getTrustedX509Certificates().size() > 0) {
+		if (!useInsecureTrustManager && !ssl.getTrustedX509Certificates().isEmpty()) {
 			sslContextBuilder.trustManager(getTrustedX509CertificatesForTrustManager());
 		}
 

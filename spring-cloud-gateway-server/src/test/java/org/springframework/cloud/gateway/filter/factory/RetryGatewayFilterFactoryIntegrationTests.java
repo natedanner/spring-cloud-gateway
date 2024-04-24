@@ -84,9 +84,8 @@ public class RetryGatewayFilterFactoryIntegrationTests extends BaseWebClientTest
 	public void retryFilterFailure() {
 		testClient.mutate().responseTimeout(Duration.ofSeconds(10)).build().get()
 				.uri("/retryalwaysfail?key=getjavafailure&count=4").header(HttpHeaders.HOST, "www.retryjava.org")
-				.exchange().expectStatus().is5xxServerError().expectBody(String.class).consumeWith(result -> {
-					assertThat(result.getResponseBody()).contains("permanently broken");
-				});
+				.exchange().expectStatus().is5xxServerError().expectBody(String.class).consumeWith(result ->
+					assertThat(result.getResponseBody()).contains("permanently broken"));
 	}
 
 	@Test
@@ -303,7 +302,7 @@ public class RetryGatewayFilterFactoryIntegrationTests extends BaseWebClientTest
 	protected static class TestBadLoadBalancerConfig {
 
 		@LocalServerPort
-		protected int port = 0;
+		protected int port;
 
 		@Bean
 		public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {

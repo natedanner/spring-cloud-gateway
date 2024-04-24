@@ -38,7 +38,7 @@ import org.springframework.web.server.ServerWebExchange;
  */
 public class ProxyExchangeArgumentResolver implements HandlerMethodArgumentResolver {
 
-	private WebClient rest;
+	private final WebClient rest;
 
 	private HttpHeaders headers;
 
@@ -84,7 +84,7 @@ public class ProxyExchangeArgumentResolver implements HandlerMethodArgumentResol
 			ServerWebExchange exchange) {
 		ProxyExchange<?> proxy = new ProxyExchange<>(rest, exchange, bindingContext, type(parameter));
 		proxy.headers(headers);
-		if (this.autoForwardedHeaders.size() > 0) {
+		if (!this.autoForwardedHeaders.isEmpty()) {
 			proxy.headers(extractAutoForwardedHeaders(exchange));
 		}
 		if (sensitive != null) {

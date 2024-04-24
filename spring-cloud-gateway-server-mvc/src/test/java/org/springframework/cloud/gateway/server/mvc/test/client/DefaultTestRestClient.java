@@ -277,11 +277,10 @@ public class DefaultTestRestClient implements TestRestClient {
 			HttpHeaders combinedHeaders = new HttpHeaders();
 			combinedHeaders.putAll(getHeaders());
 			if (!ObjectUtils.isEmpty(cookies)) {
-				cookies.forEach((name, values) -> {
+				cookies.forEach((name, values) ->
 					values.forEach(value -> {
 						combinedHeaders.add("Cookie", name + "=" + value);
-					});
-				});
+					}));
 			}
 			RequestEntity.BodyBuilder builder = RequestEntity.method(httpMethod, uri).headers(combinedHeaders);
 			RequestEntity<Object> request = builder.body(body, type);
@@ -518,7 +517,7 @@ public class DefaultTestRestClient implements TestRestClient {
 
 		DefaultBodyContentSpec(EntityExchangeResult<byte[]> result) {
 			this.result = result;
-			this.isEmpty = (result.getResponseBody() == null || result.getResponseBody().length == 0);
+			this.isEmpty = result.getResponseBody() == null || result.getResponseBody().length == 0;
 		}
 
 		@Override

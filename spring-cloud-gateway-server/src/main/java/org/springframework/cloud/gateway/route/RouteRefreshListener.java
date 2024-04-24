@@ -35,7 +35,7 @@ public class RouteRefreshListener implements ApplicationListener<ApplicationEven
 
 	private final ApplicationEventPublisher publisher;
 
-	private HeartbeatMonitor monitor = new HeartbeatMonitor();
+	private final HeartbeatMonitor monitor = new HeartbeatMonitor();
 
 	public RouteRefreshListener(ApplicationEventPublisher publisher) {
 		Assert.notNull(publisher, "publisher may not be null");

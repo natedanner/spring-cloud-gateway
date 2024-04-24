@@ -78,7 +78,7 @@ class OnEnabledComponentTests {
 	}
 
 	private OnEnabledComponent<Object> createOnEnabledComponent(String componentName) {
-		return new OnEnabledComponent<Object>() {
+		return new OnEnabledComponent<>() {
 			@Override
 			protected String normalizeComponentName(Class<?> componentClass) {
 				return componentName;

@@ -41,7 +41,7 @@ public class GatewayMetricsFilter implements GlobalFilter, Ordered {
 
 	private final MeterRegistry meterRegistry;
 
-	private GatewayTagsProvider compositeTagsProvider;
+	private final GatewayTagsProvider compositeTagsProvider;
 
 	private final String metricsPrefix;
 

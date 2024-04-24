@@ -52,7 +52,7 @@ public class HttpHeadersFilterMixedTypeTests {
 
 	private HttpHeadersFilter filterRemovingHeaders(Type type, String... headerNames) {
 		Set<String> headerNamesSet = new HashSet<>(Arrays.asList(headerNames));
-		HttpHeadersFilter filter = new HttpHeadersFilter() {
+		return new HttpHeadersFilter() {
 			@Override
 			public HttpHeaders filter(HttpHeaders headers, ServerWebExchange exchange) {
 				HttpHeaders result = new HttpHeaders();
@@ -69,7 +69,6 @@ public class HttpHeadersFilterMixedTypeTests {
 				return path.equals(type);
 			}
 		};
-		return filter;
 	}
 
 }

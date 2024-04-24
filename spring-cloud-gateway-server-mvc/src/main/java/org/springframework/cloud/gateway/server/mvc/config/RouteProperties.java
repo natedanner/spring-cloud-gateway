@@ -70,7 +70,7 @@ public class RouteProperties {
 	/**
 	 * The order of the Route, defaults to zero.
 	 */
-	private int order = 0;
+	private int order;
 
 	public RouteProperties() {
 	}

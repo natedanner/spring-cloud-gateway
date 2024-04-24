@@ -59,7 +59,7 @@ public class WeightCalculatorFilter implements Filter, Ordered, SmartApplication
 
 	private static final Log log = LogFactory.getLog(WeightCalculatorFilter.class);
 
-	private Supplier<Double> randomSupplier = null;
+	private Supplier<Double> randomSupplier;
 
 	private int order = WEIGHT_CALC_FILTER_ORDER;
 

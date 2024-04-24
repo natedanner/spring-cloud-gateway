@@ -63,9 +63,7 @@ public class ForwardedHeadersFilter implements HttpHeadersFilter, Ordered {
 			return null;
 		}
 
-		Forwarded forwarded = new Forwarded(result);
-
-		return forwarded;
+		return new Forwarded(result);
 	}
 
 	/* for testing */ static LinkedCaseInsensitiveMap<String> splitIntoCaseInsensitiveMap(String[] pairs) {

@@ -56,10 +56,10 @@ public class TokenRelayGatewayFilterFactory
 
 	@Override
 	public GatewayFilter apply(NameConfig config) {
-		String defaultClientRegistrationId = (config == null) ? null : config.getName();
+		String defaultClientRegistrationId = config == null ? null : config.getName();
 		return (exchange, chain) -> exchange.getPrincipal()
 				// .log("token-relay-filter")
-				.filter(principal -> principal instanceof Authentication).cast(Authentication.class)
+				.filter(Authentication.class::isInstance).cast(Authentication.class)
 				.flatMap(principal -> authorizationRequest(defaultClientRegistrationId, principal))
 				.flatMap(this::authorizedClient).map(OAuth2AuthorizedClient::getAccessToken)
 				.map(token -> withBearerAuth(exchange, token))

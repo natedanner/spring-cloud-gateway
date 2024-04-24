@@ -49,7 +49,7 @@ public class ProxyProperties {
 	/**
 	 * A set of sensitive header names that will not be sent downstream by default.
 	 */
-	private Set<String> sensitive = null;
+	private Set<String> sensitive;
 
 	public Map<String, String> getHeaders() {
 		return headers;

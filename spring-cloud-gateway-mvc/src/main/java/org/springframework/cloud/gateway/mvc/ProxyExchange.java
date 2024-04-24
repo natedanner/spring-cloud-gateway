@@ -145,23 +145,23 @@ public class ProxyExchange<T> {
 
 	private URI uri;
 
-	private RestTemplate rest;
+	private final RestTemplate rest;
 
 	private Object body;
 
-	private RequestResponseBodyMethodProcessor delegate;
+	private final RequestResponseBodyMethodProcessor delegate;
 
-	private NativeWebRequest webRequest;
+	private final NativeWebRequest webRequest;
 
-	private ModelAndViewContainer mavContainer;
+	private final ModelAndViewContainer mavContainer;
 
-	private WebDataBinderFactory binderFactory;
+	private final WebDataBinderFactory binderFactory;
 
 	private Set<String> sensitive;
 
-	private HttpHeaders headers = new HttpHeaders();
+	private final HttpHeaders headers = new HttpHeaders();
 
-	private Type responseType;
+	private final Type responseType;
 
 	public ProxyExchange(RestTemplate rest, NativeWebRequest webRequest, ModelAndViewContainer mavContainer,
 			WebDataBinderFactory binderFactory, Type type) {
@@ -493,8 +493,7 @@ public class ProxyExchange<T> {
 		}
 
 		private List<String> header(String name) {
-			List<String> list = headers.get(name);
-			return list;
+			return headers.get(name);
 		}
 
 		@Override
@@ -558,7 +557,7 @@ public class ProxyExchange<T> {
  */
 class ServletOutputToInputConverter extends HttpServletResponseWrapper {
 
-	private StringBuilder builder = new StringBuilder();
+	private final StringBuilder builder = new StringBuilder();
 
 	ServletOutputToInputConverter(HttpServletResponse response) {
 		super(response);

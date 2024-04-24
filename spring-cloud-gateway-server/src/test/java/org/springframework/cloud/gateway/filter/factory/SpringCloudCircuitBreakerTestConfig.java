@@ -130,8 +130,8 @@ public class SpringCloudCircuitBreakerTestConfig {
 								.circuitBreaker(config -> config.setName("fallbackcmd")
 										.setFallbackUri("forward:/resetExchangeFallbackController"))
 								.filter((exchange, chain) -> chain.filter(exchange)
-										.then(Mono.defer(() -> !exchange.getResponse().isCommitted()
-												? Mono.error(new Exception("Some Random Exception")) : Mono.empty()))))
+										.then(Mono.defer(() -> exchange.getResponse().isCommitted()
+												? Mono.empty() : Mono.error(new Exception("Some Random Exception"))))))
 								.uri(uri))
 				.build();
 	}

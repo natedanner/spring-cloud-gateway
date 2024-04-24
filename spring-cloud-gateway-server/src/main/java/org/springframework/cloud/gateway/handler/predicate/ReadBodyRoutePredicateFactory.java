@@ -60,7 +60,7 @@ public class ReadBodyRoutePredicateFactory extends AbstractRoutePredicateFactory
 	@Override
 	@SuppressWarnings("unchecked")
 	public AsyncPredicate<ServerWebExchange> applyAsync(Config config) {
-		return new AsyncPredicate<ServerWebExchange>() {
+		return new AsyncPredicate<>() {
 			@Override
 			public Publisher<Boolean> apply(ServerWebExchange exchange) {
 				Class inClass = config.getInClass();
@@ -89,7 +89,7 @@ public class ReadBodyRoutePredicateFactory extends AbstractRoutePredicateFactory
 				}
 				else {
 					return ServerWebExchangeUtils.cacheRequestBodyAndRequest(exchange,
-							(serverHttpRequest) -> ServerRequest
+							serverHttpRequest -> ServerRequest
 									.create(exchange.mutate().request(serverHttpRequest).build(), messageReaders)
 									.bodyToMono(inClass).doOnNext(objectValue -> exchange.getAttributes()
 											.put(CACHE_REQUEST_BODY_OBJECT_KEY, objectValue))

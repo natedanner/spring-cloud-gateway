@@ -61,10 +61,9 @@ public class SaveSessionGatewayFilterFactoryTests extends BaseWebClientTests {
 	public void webCallShouldTriggerWebSessionSaveAction() {
 
 		when(mockWebSession.getAttributes()).thenReturn(new HashMap<>());
-		Mono<Void> doSaveSession = Mono.fromRunnable(() -> {
+		Mono<Void> doSaveSession = Mono.fromRunnable(() ->
 			// Do save session. Need to make sure the Mono is subscribed
-			fakeSessionStore.put(SESSION_ID, mockWebSession);
-		});
+			fakeSessionStore.put(SESSION_ID, mockWebSession));
 		when(mockWebSession.save()).thenReturn(doSaveSession);
 
 		Mono<Map> result = webClient.get().uri("/get").retrieve().bodyToMono(Map.class);

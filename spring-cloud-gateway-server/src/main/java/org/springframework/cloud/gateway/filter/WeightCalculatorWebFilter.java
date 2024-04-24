@@ -73,7 +73,7 @@ public class WeightCalculatorWebFilter implements WebFilter, Ordered, SmartAppli
 
 	private int order = WEIGHT_CALC_FILTER_ORDER;
 
-	private Map<String, GroupWeightConfig> groupWeights = new ConcurrentHashMap<>();
+	private final Map<String, GroupWeightConfig> groupWeights = new ConcurrentHashMap<>();
 
 	private final AtomicBoolean routeLocatorInitialized = new AtomicBoolean();
 

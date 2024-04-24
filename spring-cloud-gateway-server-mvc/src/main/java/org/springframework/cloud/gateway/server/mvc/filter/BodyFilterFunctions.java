@@ -105,7 +105,7 @@ public abstract class BodyFilterFunctions {
 			R convertedBody = rewriteFunction.apply(request, body);
 			// TODO: cache converted body
 
-			MediaType contentType = (StringUtils.hasText(newContentType)) ? MediaType.parseMediaType(newContentType)
+			MediaType contentType = StringUtils.hasText(newContentType) ? MediaType.parseMediaType(newContentType)
 					: request.headers().contentType().orElse(null);
 
 			List<HttpMessageConverter<?>> httpMessageConverters = request.messageConverters();
@@ -141,7 +141,7 @@ public abstract class BodyFilterFunctions {
 		}).orElse(request);
 	}
 
-	private final static class ByteArrayHttpOutputMessage implements HttpOutputMessage {
+	private static final class ByteArrayHttpOutputMessage implements HttpOutputMessage {
 
 		private final HttpHeaders headers;
 

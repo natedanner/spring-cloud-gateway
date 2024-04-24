@@ -73,7 +73,7 @@ public class LoadBalancerServiceInstanceCookieFilter implements GlobalFilter, Or
 		if (!StringUtils.hasText(instanceIdCookieName)) {
 			return chain.filter(exchange);
 		}
-		ServerWebExchange newExchange = exchange.mutate().request(exchange.getRequest().mutate().headers((headers) -> {
+		ServerWebExchange newExchange = exchange.mutate().request(exchange.getRequest().mutate().headers(headers -> {
 			List<String> cookieHeaders = new ArrayList<>(headers.getOrEmpty(HttpHeaders.COOKIE));
 			String serviceInstanceCookie = new HttpCookie(instanceIdCookieName,
 					serviceInstanceResponse.getServer().getInstanceId()).toString();

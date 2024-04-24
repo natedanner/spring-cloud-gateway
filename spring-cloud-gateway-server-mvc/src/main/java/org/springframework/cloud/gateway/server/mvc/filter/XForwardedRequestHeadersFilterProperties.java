@@ -28,7 +28,7 @@ public class XForwardedRequestHeadersFilterProperties {
 	public static final String PREFIX = GatewayMvcProperties.PREFIX + ".x-forwarded-request-headers-filter";
 
 	/** The order of the XForwardedHeadersFilter. */
-	private int order = 0;
+	private int order;
 
 	/** If the XForwardedHeadersFilter is enabled. */
 	private boolean enabled = true;

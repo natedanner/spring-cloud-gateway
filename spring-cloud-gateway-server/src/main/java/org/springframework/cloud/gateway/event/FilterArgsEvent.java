@@ -24,7 +24,7 @@ public class FilterArgsEvent extends ApplicationEvent {
 
 	private final Map<String, Object> args;
 
-	private String routeId;
+	private final String routeId;
 
 	public FilterArgsEvent(Object source, String routeId, Map<String, Object> args) {
 		super(source);

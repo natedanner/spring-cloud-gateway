@@ -56,7 +56,7 @@ public class MvcFailureAnalyzerApplication {
 class MyServiceConf {
 
 	@Value("${local.server.port}")
-	private int port = 0;
+	private int port;
 
 	@Bean
 	public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {

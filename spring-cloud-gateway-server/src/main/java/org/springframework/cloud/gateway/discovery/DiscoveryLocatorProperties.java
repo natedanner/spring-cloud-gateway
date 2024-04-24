@@ -28,7 +28,7 @@ import org.springframework.core.style.ToStringCreator;
 public class DiscoveryLocatorProperties {
 
 	/** Flag that enables DiscoveryClient gateway integration. */
-	private boolean enabled = false;
+	private boolean enabled;
 
 	/**
 	 * The prefix for the routeId, defaults to discoveryClient.getClass().getSimpleName()
@@ -52,7 +52,7 @@ public class DiscoveryLocatorProperties {
 	 * with eureka when it automatically uppercases serviceId. so MYSERIVCE, would match
 	 * /myservice/**
 	 */
-	private boolean lowerCaseServiceId = false;
+	private boolean lowerCaseServiceId;
 
 	private List<PredicateDefinition> predicates = new ArrayList<>();
 

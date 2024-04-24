@@ -46,9 +46,9 @@ import static org.springframework.cloud.gateway.support.GatewayToStringStyler.fi
 public class RequestHeaderSizeGatewayFilterFactory
 		extends AbstractGatewayFilterFactory<RequestHeaderSizeGatewayFilterFactory.Config> {
 
-	private static String ERROR_PREFIX = "Request Header/s size is larger than permissible limit (%s).";
+	private static final String ERROR_PREFIX = "Request Header/s size is larger than permissible limit (%s).";
 
-	private static String ERROR = " Request Header/s size for '%s' is %s.";
+	private static final String ERROR = " Request Header/s size for '%s' is %s.";
 
 	public RequestHeaderSizeGatewayFilterFactory() {
 		super(RequestHeaderSizeGatewayFilterFactory.Config.class);

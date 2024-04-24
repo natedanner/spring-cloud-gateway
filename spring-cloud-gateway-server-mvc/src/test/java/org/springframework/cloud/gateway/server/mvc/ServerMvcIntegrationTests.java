@@ -456,9 +456,8 @@ public class ServerMvcIntegrationTests {
 				.exchange()
 				.expectStatus().isOk()
 				.expectBody(Map.class)
-				.consumeWith(result -> {
-					assertMultipartData(result.getResponseBody());
-				});
+				.consumeWith(result ->
+					assertMultipartData(result.getResponseBody()));
 		// @formatter:on
 	}
 
@@ -555,9 +554,8 @@ public class ServerMvcIntegrationTests {
 	public void removeRequestParameterPostWorks() {
 		restClient.post().uri("/post?foo=bar").bodyValue("hello").header("Host", "www.removerequestparampost.org")
 				.exchange().expectStatus().isOk().expectHeader().doesNotExist("foo").expectBody(Map.class)
-				.consumeWith(res -> {
-					assertThat(res.getResponseBody()).containsEntry("data", "hello");
-				});
+				.consumeWith(res ->
+					assertThat(res.getResponseBody()).containsEntry("data", "hello"));
 	}
 
 	@Test
@@ -1291,8 +1289,7 @@ public class ServerMvcIntegrationTests {
 
 		@Bean
 		public FilterRegistrationBean myFilter() {
-			FilterRegistrationBean<MyFilter> reg = new FilterRegistrationBean<>(new MyFilter());
-			return reg;
+			return new FilterRegistrationBean<>(new MyFilter());
 		}
 
 		private Predicate<Event> eventPredicate(String foo) {
@@ -1337,8 +1334,8 @@ public class ServerMvcIntegrationTests {
 
 		static boolean isFormPost(HttpServletRequest request) {
 			String contentType = request.getContentType();
-			return (contentType != null && contentType.contains(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-					&& HttpMethod.POST.matches(request.getMethod()));
+			return contentType != null && contentType.contains(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+					&& HttpMethod.POST.matches(request.getMethod());
 		}
 
 	}

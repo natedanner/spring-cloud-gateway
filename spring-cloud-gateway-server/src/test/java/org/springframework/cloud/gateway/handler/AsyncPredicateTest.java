@@ -92,11 +92,11 @@ public class AsyncPredicateTest {
 	/**
 	 * An AsyncPredicate decorator that records if the apply method was called.
 	 */
-	private final static class TestAsyncPredicate<T> implements AsyncPredicate<T> {
+	private static final class TestAsyncPredicate<T> implements AsyncPredicate<T> {
 
 		private final Predicate<T> delegate;
 
-		private boolean tested = false;
+		private boolean tested;
 
 		private TestAsyncPredicate(Predicate<T> predicate) {
 			this.delegate = predicate;

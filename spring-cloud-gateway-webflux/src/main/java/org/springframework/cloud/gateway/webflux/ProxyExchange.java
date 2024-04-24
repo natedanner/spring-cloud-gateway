@@ -117,25 +117,25 @@ public class ProxyExchange<T> {
 	public static Set<String> DEFAULT_SENSITIVE = Collections
 			.unmodifiableSet(new HashSet<>(Arrays.asList("cookie", "authorization")));
 
-	private HttpMethod httpMethod;
+	private final HttpMethod httpMethod;
 
 	private URI uri;
 
-	private WebClient rest;
+	private final WebClient rest;
 
 	private Publisher<Object> body;
 
-	private boolean hasBody = false;
+	private boolean hasBody;
 
-	private ServerWebExchange exchange;
+	private final ServerWebExchange exchange;
 
-	private BindingContext bindingContext;
+	private final BindingContext bindingContext;
 
 	private Set<String> sensitive;
 
-	private HttpHeaders headers = new HttpHeaders();
+	private final HttpHeaders headers = new HttpHeaders();
 
-	private Type responseType;
+	private final Type responseType;
 
 	public ProxyExchange(WebClient rest, ServerWebExchange exchange, BindingContext bindingContext, Type type) {
 		this.exchange = exchange;

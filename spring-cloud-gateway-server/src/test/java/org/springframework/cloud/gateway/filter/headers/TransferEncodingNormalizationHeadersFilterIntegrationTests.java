@@ -139,7 +139,7 @@ public class TransferEncodingNormalizationHeadersFilterIntegrationTests {
 	public static class TestLoadBalancerConfig {
 
 		@LocalServerPort
-		protected int port = 0;
+		protected int port;
 
 		@Bean
 		public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {

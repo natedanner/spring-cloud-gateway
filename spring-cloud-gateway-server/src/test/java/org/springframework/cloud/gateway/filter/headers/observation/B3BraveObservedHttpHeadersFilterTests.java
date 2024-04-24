@@ -80,7 +80,7 @@ class B3BraveObservedHttpHeadersFilterTests {
 			MockServerHttpRequest.BaseBuilder<?> builder = MockServerHttpRequest
 					.get("http://localhost:8080/{foo}", "get").header("X-A", "aValue");
 			TraceContext context = tracer.currentTraceContext().context();
-			propagator.inject(context, builder, (b, k, v) -> b.header(k, v));
+			propagator.inject(context, builder, MockServerHttpRequest.BaseBuilder::header);
 
 			// and
 			MockServerHttpRequest request = builder.build();

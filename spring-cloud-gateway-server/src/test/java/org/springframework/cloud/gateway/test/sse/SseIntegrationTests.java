@@ -263,7 +263,7 @@ public class SseIntegrationTests {
 				return false;
 			}
 			Person person = (Person) o;
-			return !(this.name != null ? !this.name.equals(person.name) : person.name != null);
+			return this.name == null ? !this.name.equals(person.name) : person.name != null;
 		}
 
 		@Override

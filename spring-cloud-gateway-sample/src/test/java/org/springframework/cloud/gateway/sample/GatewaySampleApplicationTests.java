@@ -60,7 +60,7 @@ public class GatewaySampleApplicationTests {
 	GatewayMetricsProperties metricsProperties;
 
 	@LocalServerPort
-	protected int port = 0;
+	protected int port;
 
 	protected WebTestClient webClient;
 

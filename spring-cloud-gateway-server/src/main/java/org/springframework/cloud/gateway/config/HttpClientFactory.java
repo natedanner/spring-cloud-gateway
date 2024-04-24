@@ -127,9 +127,8 @@ public class HttpClientFactory extends AbstractFactoryBean<HttpClient> {
 		if (StringUtils.hasText(properties.getProxy().getHost())) {
 			HttpClientProperties.Proxy proxy = properties.getProxy();
 
-			httpClient = httpClient.proxy(proxySpec -> {
-				configureProxyProvider(proxy, proxySpec);
-			});
+			httpClient = httpClient.proxy(proxySpec ->
+				configureProxyProvider(proxy, proxySpec));
 		}
 		return httpClient;
 	}

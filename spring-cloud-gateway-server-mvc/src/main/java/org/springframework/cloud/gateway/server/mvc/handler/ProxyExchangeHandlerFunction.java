@@ -125,7 +125,7 @@ public class ProxyExchangeHandlerFunction
 		HttpHeaders filtered = original;
 		for (var filter : filters) {
 			@SuppressWarnings("unchecked")
-			var typed = ((HttpHeadersFilter<REQUEST_OR_RESPONSE>) filter);
+			var typed = (HttpHeadersFilter<REQUEST_OR_RESPONSE>) filter;
 			filtered = typed.apply(filtered, requestOrResponse);
 		}
 		return filtered;

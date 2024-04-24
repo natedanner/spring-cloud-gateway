@@ -188,13 +188,13 @@ public class HttpClientProperties {
 		 * Time in millis after which the channel will be closed. If NULL, there is no max
 		 * idle time.
 		 */
-		private Duration maxIdleTime = null;
+		private Duration maxIdleTime;
 
 		/**
 		 * Duration after which the channel will be closed. If NULL, there is no max life
 		 * time.
 		 */
-		private Duration maxLifeTime = null;
+		private Duration maxLifeTime;
 
 		/**
 		 * Perform regular eviction checks in the background at a specified interval.
@@ -206,7 +206,7 @@ public class HttpClientProperties {
 		 * Enables channel pools metrics to be collected and registered in Micrometer.
 		 * Disabled by default.
 		 */
-		private boolean metrics = false;
+		private boolean metrics;
 
 		public PoolType getType() {
 			return type;
@@ -386,7 +386,7 @@ public class HttpClientProperties {
 		 * Installs the netty InsecureTrustManagerFactory. This is insecure and not
 		 * suitable for production.
 		 */
-		private boolean useInsecureTrustManager = false;
+		private boolean useInsecureTrustManager;
 
 		/** Trusted certificates for verifying the remote endpoint's certificate. */
 		private List<String> trustedX509Certificates = new ArrayList<>();

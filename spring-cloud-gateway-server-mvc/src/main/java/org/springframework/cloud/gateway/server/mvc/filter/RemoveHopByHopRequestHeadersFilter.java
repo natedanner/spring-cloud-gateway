@@ -42,9 +42,9 @@ public class RemoveHopByHopRequestHeadersFilter implements RequestHttpHeadersFil
 			// "content-length",
 			));
 
-	private int order = Ordered.LOWEST_PRECEDENCE - 1;
+	private final int order = Ordered.LOWEST_PRECEDENCE - 1;
 
-	private Set<String> headers = HEADERS_REMOVED_ON_REQUEST;
+	private final Set<String> headers = HEADERS_REMOVED_ON_REQUEST;
 
 	@Override
 	public HttpHeaders apply(HttpHeaders input, ServerRequest serverRequest) {

@@ -41,7 +41,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.t
 /**
  * @author Spencer Gibb
  */
-public class Route implements Ordered {
+public final class Route implements Ordered {
 
 	private final String id;
 
@@ -154,7 +154,7 @@ public class Route implements Ordered {
 
 		protected URI uri;
 
-		protected int order = 0;
+		protected int order;
 
 		protected List<GatewayFilter> gatewayFilters = new ArrayList<>();
 
@@ -187,7 +187,7 @@ public class Route implements Ordered {
 			this.uri = uri;
 			String scheme = this.uri.getScheme();
 			Assert.hasText(scheme, "The parameter [" + this.uri + "] format is incorrect, scheme can not be empty");
-			if (scheme.equalsIgnoreCase("localhost")) {
+			if ("localhost".equalsIgnoreCase(scheme)) {
 				// common error
 				// TODO: find a general way to detect without breaking existing behavior
 				throw new IllegalArgumentException(
@@ -195,7 +195,7 @@ public class Route implements Ordered {
 			}
 			if (this.uri.getPort() < 0 && scheme.startsWith("http")) {
 				// default known http ports
-				int port = this.uri.getScheme().equals("https") ? 443 : 80;
+				int port = "https".equals(this.uri.getScheme()) ? 443 : 80;
 				this.uri = UriComponentsBuilder.fromUri(this.uri).port(port).build(false).toUri();
 			}
 			return getThis();

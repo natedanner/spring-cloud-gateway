@@ -78,8 +78,7 @@ public abstract class AbstractGatewayDiscoverer {
 	protected <T> List<T> loadSuppliers(Class<T> supplierClass) {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
-		List<T> suppliers = SpringFactoriesLoader.loadFactories(supplierClass, classLoader);
-		return suppliers;
+		return SpringFactoriesLoader.loadFactories(supplierClass, classLoader);
 	}
 
 	public MultiValueMap<String, OperationMethod> getOperations() {

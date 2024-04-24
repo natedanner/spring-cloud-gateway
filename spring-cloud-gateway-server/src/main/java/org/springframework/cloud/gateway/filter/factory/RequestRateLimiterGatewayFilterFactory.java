@@ -126,7 +126,7 @@ public class RequestRateLimiterGatewayFilterFactory
 	}
 
 	private <T> T getOrDefault(T configValue, T defaultValue) {
-		return (configValue != null) ? configValue : defaultValue;
+		return configValue != null ? configValue : defaultValue;
 	}
 
 	public static class Config implements HasRouteId {

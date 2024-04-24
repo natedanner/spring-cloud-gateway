@@ -159,9 +159,8 @@ public abstract class MvcUtils {
 		// This map is made in GatewayDelegatingRouterFunction.route() and persists across
 		// attribute resetting in RequestPredicates
 		// computeIfAbsent if the used vanilla RouterFunctions.route()
-		Map<String, Object> attributes = (Map<String, Object>) request.attributes()
+		return (Map<String, Object>) request.attributes()
 				.computeIfAbsent(GATEWAY_ATTRIBUTES_ATTR, s -> new HashMap<String, Object>());
-		return attributes;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -170,8 +169,7 @@ public abstract class MvcUtils {
 				.get(URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		Map<String, Object> gatewayUriTemplateVars = (Map<String, Object>) getGatewayAttributes(request)
 				.get(URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-		Map<String, Object> merged = mergeMaps(reqUriTemplateVars, gatewayUriTemplateVars);
-		return merged;
+		return mergeMaps(reqUriTemplateVars, gatewayUriTemplateVars);
 	}
 
 	public static void putAttribute(ServerRequest request, String key, Object value) {

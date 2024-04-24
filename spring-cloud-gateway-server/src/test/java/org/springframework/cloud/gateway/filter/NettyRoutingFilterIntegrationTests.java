@@ -70,26 +70,26 @@ public class NettyRoutingFilterIntegrationTests extends BaseWebClientTests {
 
 	@Test
 	public void canHandleDecoratedResponseWithNonStandardStatusValue() {
-		final int NON_STANDARD_STATUS = 480;
+		final int nonStandardStatus = 480;
 		responseDecorator.decorateResponseTimes(1);
-		testClient.mutate().baseUrl("http://localhost:" + port).build().get().uri("/status/" + NON_STANDARD_STATUS)
-				.exchange().expectStatus().isEqualTo(NON_STANDARD_STATUS);
+		testClient.mutate().baseUrl("http://localhost:" + port).build().get().uri("/status/" + nonStandardStatus)
+				.exchange().expectStatus().isEqualTo(nonStandardStatus);
 	}
 
 	@Test
 	public void canHandleUndecoratedResponseWithNonStandardStatusValue() {
-		final int NON_STANDARD_STATUS = 480;
+		final int nonStandardStatus = 480;
 		responseDecorator.decorateResponseTimes(0);
-		testClient.mutate().baseUrl("http://localhost:" + port).build().get().uri("/status/" + NON_STANDARD_STATUS)
-				.exchange().expectStatus().isEqualTo(NON_STANDARD_STATUS);
+		testClient.mutate().baseUrl("http://localhost:" + port).build().get().uri("/status/" + nonStandardStatus)
+				.exchange().expectStatus().isEqualTo(nonStandardStatus);
 	}
 
 	@Test
 	public void canHandleMultiplyDecoratedResponseWithNonStandardStatusValue() {
-		final int NON_STANDARD_STATUS = 142;
+		final int nonStandardStatus = 142;
 		responseDecorator.decorateResponseTimes(14);
-		testClient.mutate().baseUrl("http://localhost:" + port).build().get().uri("/status/" + NON_STANDARD_STATUS)
-				.exchange().expectStatus().isEqualTo(NON_STANDARD_STATUS);
+		testClient.mutate().baseUrl("http://localhost:" + port).build().get().uri("/status/" + nonStandardStatus)
+				.exchange().expectStatus().isEqualTo(nonStandardStatus);
 	}
 
 	@Test

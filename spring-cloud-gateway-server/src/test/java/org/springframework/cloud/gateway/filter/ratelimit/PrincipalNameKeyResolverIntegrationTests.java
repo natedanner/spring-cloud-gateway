@@ -56,7 +56,7 @@ import static org.springframework.web.reactive.function.client.ExchangeFilterFun
 public class PrincipalNameKeyResolverIntegrationTests {
 
 	@LocalServerPort
-	protected int port = 0;
+	protected int port;
 
 	protected WebTestClient client;
 

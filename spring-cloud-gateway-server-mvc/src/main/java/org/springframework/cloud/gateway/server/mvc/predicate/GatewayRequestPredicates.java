@@ -243,7 +243,7 @@ public abstract class GatewayRequestPredicates {
 
 		CookieRequestPredicate(String name, String regexp) {
 			this.name = name;
-			this.pattern = (StringUtils.hasText(regexp)) ? Pattern.compile(regexp) : null;
+			this.pattern = StringUtils.hasText(regexp) ? Pattern.compile(regexp) : null;
 		}
 
 		@Override
@@ -290,7 +290,7 @@ public abstract class GatewayRequestPredicates {
 
 		HeaderRequestPredicate(String header, String regexp) {
 			this.header = header;
-			this.pattern = (StringUtils.hasText(regexp)) ? Pattern.compile(regexp) : null;
+			this.pattern = StringUtils.hasText(regexp) ? Pattern.compile(regexp) : null;
 		}
 
 		@Override

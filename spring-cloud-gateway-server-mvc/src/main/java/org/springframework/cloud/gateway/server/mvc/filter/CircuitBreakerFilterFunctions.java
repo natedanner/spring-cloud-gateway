@@ -158,7 +158,7 @@ public abstract class CircuitBreakerFilterFunctions {
 
 		public CircuitBreakerConfig setFallbackUri(URI fallbackUri) {
 			if (fallbackUri != null) {
-				Assert.isTrue(fallbackUri.getScheme().equalsIgnoreCase("forward"),
+				Assert.isTrue("forward".equalsIgnoreCase(fallbackUri.getScheme()),
 						() -> "Scheme must be forward, but is " + fallbackUri.getScheme());
 				fallbackPath = fallbackUri.getPath();
 			}

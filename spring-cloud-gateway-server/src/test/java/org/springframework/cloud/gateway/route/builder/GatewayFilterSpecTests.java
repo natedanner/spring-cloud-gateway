@@ -179,7 +179,7 @@ public class GatewayFilterSpecTests {
 
 		RouteLocatorBuilder.Builder routes = new RouteLocatorBuilder(context).routes();
 		GatewayFilterSpec spec = new GatewayFilterSpec(routeBuilder, routes);
-		spec.modifyResponseBody((smth) -> new ModifyResponseBodyGatewayFilterFactory.Config()
+		spec.modifyResponseBody(smth -> new ModifyResponseBodyGatewayFilterFactory.Config()
 				.setRewriteFunction(String.class, String.class, (exchange, s) -> Mono.just(s)));
 
 		Route route = routeBuilder.build();

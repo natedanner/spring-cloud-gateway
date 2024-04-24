@@ -126,7 +126,7 @@ public interface GatewayPredicate extends Predicate<ServerWebExchange>, HasConfi
 
 		@Override
 		public boolean test(ServerWebExchange t) {
-			return (this.left.test(t) && this.right.test(t));
+			return this.left.test(t) && this.right.test(t);
 		}
 
 		@Override
@@ -157,7 +157,7 @@ public interface GatewayPredicate extends Predicate<ServerWebExchange>, HasConfi
 
 		@Override
 		public boolean test(ServerWebExchange t) {
-			return (this.left.test(t) || this.right.test(t));
+			return this.left.test(t) || this.right.test(t);
 		}
 
 		@Override

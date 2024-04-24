@@ -287,10 +287,10 @@ public class ExchangeResult {
 	}
 
 	private String formatMockServerResult() {
-		return (this.mockServerResult != null
+		return this.mockServerResult != null
 				? "\n======================  MockMvc (Server) ===============================\n" + this.mockServerResult
 						+ "\n"
-				: "");
+				: "";
 	}
 
 }

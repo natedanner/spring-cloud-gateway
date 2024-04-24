@@ -54,7 +54,7 @@ public class HeaderRoutePredicateFactory extends AbstractRoutePredicateFactory<H
 
 	@Override
 	public Predicate<ServerWebExchange> apply(Config config) {
-		Pattern pattern = (StringUtils.hasText(config.regexp)) ? Pattern.compile(config.regexp) : null;
+		Pattern pattern = StringUtils.hasText(config.regexp) ? Pattern.compile(config.regexp) : null;
 
 		return new GatewayPredicate() {
 			@Override

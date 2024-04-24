@@ -21,7 +21,7 @@ import org.springframework.core.style.ToStringCreator;
 
 public abstract class AbstractConfigurable<C> implements Configurable<C> {
 
-	private Class<C> configClass;
+	private final Class<C> configClass;
 
 	protected AbstractConfigurable(Class<C> configClass) {
 		this.configClass = configClass;

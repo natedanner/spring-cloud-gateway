@@ -32,7 +32,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 public class RouteLocatorBuilder {
 
-	private ConfigurableApplicationContext context;
+	private final ConfigurableApplicationContext context;
 
 	public RouteLocatorBuilder(ConfigurableApplicationContext context) {
 		this.context = context;
@@ -89,7 +89,7 @@ public class RouteLocatorBuilder {
 		 * @return a {@link RouteLocator}
 		 */
 		public RouteLocator build() {
-			return () -> Flux.fromIterable(this.routes).map(routeBuilder -> routeBuilder.build());
+			return () -> Flux.fromIterable(this.routes).map(Buildable::build);
 		}
 
 		ConfigurableApplicationContext getContext() {

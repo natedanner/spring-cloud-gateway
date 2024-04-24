@@ -311,7 +311,7 @@ public class AbstractGatewayControllerEndpoint implements ApplicationEventPublis
 		return this.routeDefinitionWriter.delete(Mono.just(id)).then(Mono.defer(() -> {
 			publisher.publishEvent(new RouteDeletedEvent(this, id));
 			return Mono.just(ResponseEntity.ok().build());
-		})).onErrorResume(t -> t instanceof NotFoundException, t -> Mono.just(ResponseEntity.notFound().build()));
+		})).onErrorResume(NotFoundException.class::isInstance, t -> Mono.just(ResponseEntity.notFound().build()));
 	}
 
 	@GetMapping("/routes/{id}/combinedfilters")

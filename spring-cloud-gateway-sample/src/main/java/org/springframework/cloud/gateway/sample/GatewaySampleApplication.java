@@ -67,7 +67,7 @@ public class GatewaySampleApplication {
 				)
 				.route("read_body_pred", r -> r.host("*.readbody.org")
 						.and().readBody(String.class,
-										s -> s.trim().equalsIgnoreCase("hi"))
+										s -> "hi".equalsIgnoreCase(s.trim()))
 					.filters(f -> f.prefixPath("/httpbin")
 							.addResponseHeader("X-TestHeader", "read_body_pred")
 					).uri(uri)
@@ -157,17 +157,15 @@ public class GatewaySampleApplication {
 
 	@Bean
 	public RouterFunction<ServerResponse> testFunRouterFunction() {
-		RouterFunction<ServerResponse> route = RouterFunctions.route(RequestPredicates.path("/testfun"),
+		return RouterFunctions.route(RequestPredicates.path("/testfun"),
 				request -> ServerResponse.ok().body(BodyInserters.fromValue("hello")));
-		return route;
 	}
 
 	@Bean
 	public RouterFunction<ServerResponse> testWhenMetricPathIsNotMeet() {
-		RouterFunction<ServerResponse> route = RouterFunctions.route(
+		return RouterFunctions.route(
 				RequestPredicates.path("/actuator/metrics/spring.cloud.gateway.requests"), request -> ServerResponse
 						.ok().body(BodyInserters.fromValue(HELLO_FROM_FAKE_ACTUATOR_METRICS_GATEWAY_REQUESTS)));
-		return route;
 	}
 
 	static class Hello {
